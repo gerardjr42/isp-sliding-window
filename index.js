@@ -52,7 +52,7 @@ function smallestSubArraySum(array, targetSum) {
   
   //Iterate through the array
   //start is the current element at the start of the window
-  for (let start = 0; start < array.length; start++) {
+  for (let start = 0; start < array.length; start++) {``
     currentSum += arr[start]; 
     //Add current sliding window sum to variable
     //Picture this as a caterpillar, the start is the head
@@ -69,7 +69,7 @@ function smallestSubArraySum(array, targetSum) {
       //What is start? The index of the current element in our subarray.
       //What is end? The index of the first element in our subarray.
       //Why + 1? Ensures we include the current element in the length.
-      //Ex: If we have a subarray at index 0,1,2,3. We can the length so we add +1.
+      //Ex: If we have a subarray at index 0,1,2,3. We get the length by adding +1.
       //Ex: start = 0; end = 3...What's the length: 3 - 0 + 1 = 4 in Length
       // update currentSum by subtracting the element at the start, which was removed
       currentSum -= array[end];
