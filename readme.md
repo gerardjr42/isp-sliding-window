@@ -20,7 +20,7 @@ Using Sliding Window allows us to work with a time complexity of 0 of N, linear.
 *Makes this technique an efficient time complexity algorithm*
 -  This is an optimal solution. Especially when working with large data, we must always strive for the best optimal time complexity.
 
-## What are the Criterions
+## What is the Criteria
 - Must be a continuous sequence of elements:
   - Elements that are grouped adjacently in a continuous sequence: Ex: index 0,1,2
 - Works with both strings and arrays

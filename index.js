@@ -48,12 +48,19 @@ function smallestSubArraySum(array, targetSum) {
   let minWindowLength = Infinity; //Start with highest value since we're looking for min
   let currentSum = 0; //Start the accumulator at 0
   let end = 0; //Start and end the window at 0
+  //picture this as a caterpillar, the end is the tail
   
-  //Iterate through the array, start is the current element at the start of the window
+  //Iterate through the array
+  //start is the current element at the start of the window
   for (let start = 0; start < array.length; start++) {
-    currentSum += arr[start]; //Add current sliding window sum to variable
+    currentSum += arr[start]; 
+    //Add current sliding window sum to variable
+    //Picture this as a caterpillar, the start is the head
     
-    //for each iteration, check if the currentSum is greater than the target sum;
+    /*
+    for each iteration: check if the currentSum is 
+    greater than the target sum;
+    */
     while (currentSum >= targetSum) {
       //if it passes the above: It then updates the length of the sliding window
       //The Math.min(): returns the smallest of the numbers given as input parameters, or Infinity if there are no parameters.
@@ -66,8 +73,10 @@ function smallestSubArraySum(array, targetSum) {
       //Ex: start = 0; end = 3...What's the length: 3 - 0 + 1 = 4 in Length
       // update currentSum by subtracting the element at the start, which was removed
       currentSum -= array[end];
+      //Removes the element at end of window from currentSum    
+      end++; 
       // Move the start index to the right, effectively shrinking the window
-      end++; //If start was at index 0, adds one and moves to index 1.
+      //If start was at index 0, adds one and moves to index 1.
     }
   }
   return minWindowLength; //Returns the minimum length of Window that has a sum >= targetSum
@@ -86,37 +95,37 @@ console.log(smallestSubArraySum(array, targetSum)); //1
 // 2. Now, for every set of three consecutive participants, we calculate the sum of their chosen numbers.
 // 3. The group of three with the highest sum is the one responsible for covering the bill
 /**
- * Find the subarray containing the 3 people with the highest sum. Return the position of those people.*
- *
- * @param {number[]} arr - The input array.
- * @param {number} k - The length of the subarray
- * @returns {number} - Subarray with greatest Sum
- */
-function maxSumSubarrayWithPosition(arr, k) {
-  let maxSum = 0;
-  let currentSum = 0;
+//  * Find the subarray containing the 3 people with the highest sum. Return the position of those people.*
+//  *
+//  * @param {number[]} arr - The input array.
+//  * @param {number} k - The length of the subarray
+//  * @returns {number} - Subarray with greatest Sum
+//  */
+// function maxSumSubarrayWithPosition(arr, k) {
+//   let maxSum = 0;
+//   let currentSum = 0;
 
-  let startingPosition = 0;
-  let endPosition = k - 1;
+//   let startingPosition = 0;
+//   let endPosition = k - 1;
 
-  for (let i = 0; i < k; i++) {
-    currentSum += arr[i];
-  }
+//   for (let i = 0; i < k; i++) {
+//     currentSum += arr[i];
+//   }
 
-  for (let i = k; i < arr.length; i++) {
-    currentSum = currentSum - arr[i - k] + arr[i];
+//   for (let i = k; i < arr.length; i++) {
+//     currentSum = currentSum - arr[i - k] + arr[i];
 
-    if (currentSum > maxSum) {
-      maxSum = currentSum;
-      startingPosition =  i - k + 2; //i - k + 1: Will get us the first Index, we have to add + 1 
-      endPosition = i + 1 // We add + 1 to start position from 1, not 0.
-    }
-  }
-  return {maxSum, startingPosition, endPosition}; //Return all three results
-}
-const arr1 = [3, 6, 5, 9, 3, 7, 3];
-const n = 3;
+//     if (currentSum > maxSum) {
+//       maxSum = currentSum;
+//       startingPosition =  i - k + 2; //i - k + 1: Will get us the first Index, we have to add + 1 
+//       endPosition = i + 1 // We add + 1 to start position from 1, not 0.
+//     }
+//   }
+//   return {maxSum, startingPosition, endPosition}; //Return all three results
+// }
+// const arr1 = [3, 6, 5, 9, 3, 7, 3];
+// const n = 3;
 
-console.log(maxSumSubarrayWithPosition(arr1, n)); // maxSum: 20; sP: 2, eP:4
+// console.log(maxSumSubarrayWithPosition(arr1, n)); // maxSum: 20; sP: 2, eP:4
 
 
